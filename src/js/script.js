@@ -1,36 +1,30 @@
-populateAllCards();
+let verbs = [];
 
-function populateAllCards() {
+populateAllCards().then();
+
+async function populateAllCards() {
     const cards = document.getElementsByClassName('card');
 
-    async function populateOneCard(card) {
-        const currentRandomVerb = await randomVerb();
-        const frontText = currentRandomVerb.infinitive;
-        const backText = currentRandomVerb.english;
-        setCardFrontText(card, frontText);
-        setCardBackText(card, backText);
+    if (verbs.length < cards.length) {
+        await populateVerbs();
     }
 
     for (let i = 0; i < cards.length; i++) {
-        populateOneCard(cards[i]);
+        const verbCount = verbs.length;
+        const randomVerbIndex = Math.floor(Math.random() * verbCount)
+
+        const verb = verbs[randomVerbIndex];
+        const frontText = verb.infinitive;
+        const backText = verb.english;
+        setCardFrontText(cards[i], frontText);
+        setCardBackText(cards[i], backText);
     }
 }
 
-async function randomVerb() {
+async function populateVerbs() {
     const rawVerbData = await readAllLinesFromFile('../data/verbs.csv');
     const rawLinesWithoutHeader = rawVerbData.split("\n").slice(1);
-    let verbCount = rawLinesWithoutHeader.length;
-    const randomVerbIndex = Math.floor(Math.random() * (verbCount))
-    const rawRandomVerb = rawLinesWithoutHeader[randomVerbIndex];
-    const myVerb = new ParseVerb(rawRandomVerb);
-
-    console.log(`${myVerb.english}:
-${myVerb.infinitive}
-${myVerb.pastIndicative}
-${myVerb.pastParticiple}
-${myVerb.auxVerb}`);
-
-    return myVerb;
+    rawLinesWithoutHeader.forEach(line => verbs.push(new ParseVerb(line)));
 }
 
 async function readAllLinesFromFile(file) {
