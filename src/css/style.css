@@ -12,12 +12,13 @@
 body {
     display: flex;
     justify-content: center;
+    --card-size: 150px;
 }
 
 header,
 .card-grid {
-    width: calc(15px * 6 + 150px * 3);
-    min-width: calc(15px * 6 + 150px * 3);
+    width: calc(15px * 6 + var(--card-size) * 3);
+    min-width: calc(15px * 6 + var(--card-size) * 3);
 }
 
 header {
@@ -43,24 +44,30 @@ h1 {
     grid-template-rows: repeat(3, 1fr);
 }
 
-
-.card {
-    height: 150px;
-    margin: 15px;
+.rotatable {
     position: relative;
     transition: 0.75s ease;
     transform-style: preserve-3d;
-    width: 150px;
 }
-.card-parent:hover > .card {
+
+.card {
+    height: var(--card-size);
+    width: var(--card-size);
+    margin: 15px;
+}
+
+.rotatable-wrapper:hover > .rotatable {
     transform: perspective(350px) rotateY(180deg);
 }
 
-.front,
-.back {
+.card--side {
     align-items: center;
-    backface-visibility: hidden;
     border-radius: 1em;
+}
+
+.rotatable--front,
+.rotatable--back {
+    backface-visibility: hidden;
     display: flex;
     height: 100%;
     justify-content: center;
@@ -68,46 +75,34 @@ h1 {
     width: 100%;
 }
 
-.front {
+.rotatable--back {
+    transform: rotateY(180deg);
+}
+
+.card--side.rotatable--front {
     background: white;
     color: #007BFF;
 }
 
-.back {
+.card--side.rotatable--back {
     background: #007BFF;
     color: white;
-    transform: rotateY(180deg);
 }
 
 nav {
     margin-top: 2em;
 }
 
-ul {
+nav > ul {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
     list-style: none;
 }
 
 .control-icon {
     background: #007BFF;
+    height: 4em;
+    width: 4em;
     border-radius: 2em;
-    height: 4em;
-    width: 4em;
-}
-
-.language-icon {
-    height: 100%;
-    width: 100%;
-}
-
-.language-icon > img {
-    position: absolute;
-    height: 4em;
-    width: 4em;
-}
-
-.language-icon > img:nth-child(2) {
-    top:-100%;
 }
