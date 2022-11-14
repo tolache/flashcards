@@ -9,10 +9,43 @@
     /*outline: solid #f00 1px !important;*/
 }
 
+:root,
+:root.light {
+    --bg-color: white;
+    --soft-color: #CCE5FF;
+    --accent-color: #007BFF;
+}
+
+:root.dark {
+    --bg-color: #212529;
+    --soft-color: #6c757d;
+    --accent-color: #dee2e6;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #212529;
+        --soft-color: #6c757d;
+        --accent-color: #dee2e6;
+    }
+}
+
 body {
     display: flex;
     justify-content: center;
+    background: var(--bg-color);
     --card-size: 150px;
+}
+
+aside,
+.main-content {
+    padding-top: 1em;
+}
+
+aside {
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 header,
@@ -22,14 +55,14 @@ header,
 }
 
 header {
-    background: #007BFF;
-    color: white;
+    background: var(--accent-color);
+    color: var(--bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 2em;
     height: 4em;
-    margin: 1em 0 2em;
+    margin-bottom: 2em;
 }
 
 h1 {
@@ -37,7 +70,7 @@ h1 {
 }
 
 .card-grid {
-    background: #CCE5FF;
+    background: var(--soft-color);
     border-radius: 1em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -87,13 +120,13 @@ h1 {
 }
 
 .card--side.rotatable--front {
-    background: white;
-    color: #007BFF;
+    background: var(--bg-color);
+    color: var(--accent-color);
 }
 
 .card--side.rotatable--back {
-    background: #007BFF;
-    color: white;
+    background: var(--accent-color);
+    color: var(--bg-color);
 }
 
 pre {
@@ -114,25 +147,40 @@ nav > ul {
 
 .control-icon {
     position: relative;
-    background: #007BFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--accent-color);
     height: 4em;
     width: 4em;
     border-radius: 2em;
 }
 
-input#change-language {
+.control-icon input {
     display: none;
 }
 
-.change-language--label {
+.invisible-label {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+    opacity: 0;
     z-index: 1;
 }
 
-.control-icon input#change-language:checked ~ .rotatable {
+.control-icon input#change-language--checkbox:checked ~ .rotatable {
     transform: perspective(350px) rotateY(180deg);
+}
+
+aside#right-panel {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+.control-icon p {
+    font-size: x-large;
+    color: var(--bg-color);
 }

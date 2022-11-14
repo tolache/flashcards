@@ -1,4 +1,4 @@
-const changeLanguageCheckbox = document.getElementById('change-language');
+const changeLanguageCheckbox = document.getElementById('change-language--checkbox');
 changeLanguageCheckbox.addEventListener('change', (e) => {
    if (e.currentTarget.checked) {
        languageIsEnNl = true;
@@ -30,7 +30,11 @@ async function populateAllCards() {
         let backText;
         if (!languageIsEnNl) {
             frontText = verb.infinitive;
-            backText = verb.english;
+            backText = `${verb.pastIndicative}
+                        ${verb.auxVerbHint}${verb.pastParticiple}
+                        
+                        (${verb.english})`
+                .replace(/^ */gm, '');
         } else {
             frontText = verb.english;
             backText = `${verb.infinitive}
@@ -82,4 +86,22 @@ function setCardFrontText(card, text) {
 
 function setCardBackText(card, text) {
     card.children[1].children[0].textContent = text;
+}
+
+function switchDarkMode() {
+    if (!document.documentElement.classList.contains('light') && !document.documentElement.classList.contains('dark')) {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.add('light');
+        }
+    }
+
+    if (document.documentElement.classList.contains('light')) {
+        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
+    } else if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+    }
 }

@@ -11,9 +11,12 @@
 </head>
 
 <body>
+
+<aside id="left-panel"></aside>
+
 <section class="main-content">
     <header>
-        <h1>What are the verb forms of...</h1>
+        <h1>Dutch Irregular Verbs</h1>
     </header>
     <section class="card-grid">
         <div class="rotatable-wrapper">
@@ -75,18 +78,25 @@
     <nav>
         <ul>
             <li class="control-icon rotatable-wrapper">
-                <input type="checkbox" id="change-language">
+                <input type="checkbox" id="change-language--checkbox">
                 <div class="rotatable">
                     <div class="rotatable--front"><img alt="nl-en" src="images/nl-en.png"></div>
                     <div class="rotatable--back"><img alt="nl-en" src="images/en-nl.png"></div>
                 </div>
-                <label for="change-language" class="change-language--label"></label>
+                <label for="change-language--checkbox" class="invisible-label"></label>
             </li>
             <li class="control-icon" id="next-round"></li>
             <li class="control-icon" id="reset-game"></li>
         </ul>
     </nav>
 </section>
+
+<aside id="right-panel">
+    <div class="control-icon">
+        <p>☀ ☽</p>
+        <button class="invisible-label" onclick="switchDarkMode()"></button>
+    </div>
+</aside>
 
 <script src="js/script.js"></script>
 </body>
