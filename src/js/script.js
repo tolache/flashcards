@@ -1,3 +1,15 @@
+const changeLanguageCheckbox = document.getElementById('change-language');
+changeLanguageCheckbox.addEventListener('change', (e) => {
+   if (e.currentTarget.checked) {
+       languageIsEnNl = true;
+       populateAllCards().then();
+   } else {
+       languageIsEnNl = false;
+       populateAllCards().then();
+   }
+});
+
+let languageIsEnNl = false;
 let verbs = [];
 
 populateAllCards().then();
@@ -14,8 +26,18 @@ async function populateAllCards() {
         const randomVerbIndex = Math.floor(Math.random() * verbCount)
 
         const verb = verbs[randomVerbIndex];
-        const frontText = verb.infinitive;
-        const backText = verb.english;
+        let frontText;
+        let backText;
+        if (!languageIsEnNl) {
+            frontText = verb.infinitive;
+            backText = verb.english;
+        } else {
+            frontText = verb.english;
+            backText = `${verb.infinitive}
+                        ${verb.pastIndicative}
+                        ${verb.auxVerbHint}${verb.pastParticiple}`
+                .replace(/^ */gm, '');
+        }
         setCardFrontText(cards[i], frontText);
         setCardBackText(cards[i], backText);
     }
@@ -38,7 +60,20 @@ function ParseVerb(inputString) {
     this.pastIndicative = fields[1];
     this.pastParticiple = fields[2];
     this.auxVerb = fields[3];
+    this.auxVerbHint = getAuxVerbHint(this.auxVerb);
     this.english = fields[4];
+
+    function getAuxVerbHint(auxVerb) {
+        let hint;
+        if (auxVerb.includes('hebben') && auxVerb.includes('zijn')) {
+            hint = '(*) ';
+        } else if (!auxVerb.includes('hebben') && auxVerb.includes('zijn')) {
+            hint = '* ';
+        } else {
+            hint = '';
+        }
+        return hint;
+    }
 }
 
 function setCardFrontText(card, text) {
