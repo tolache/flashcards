@@ -63,7 +63,7 @@ h1 {
     margin: 15px;
 }
 
-.rotatable-wrapper:hover .rotatable {
+.rotatable-wrapper:hover .card.rotatable {
     transform: perspective(350px) rotateY(180deg);
 }
 
@@ -133,10 +133,6 @@ input#change-language {
     z-index: 1;
 }
 
-.control-icon.rotatable-wrapper:hover .rotatable {
-    transform: perspective(350px) rotateY(0deg);
-}
-
-input#change-language:checked ~ .rotatable {
+.control-icon input#change-language:checked ~ .rotatable {
     transform: perspective(350px) rotateY(180deg);
 }
