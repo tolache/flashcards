@@ -12,6 +12,7 @@ changeLanguageCheckbox.addEventListener('change', (e) => {
 let languageIsEnNl = false;
 let verbs = [];
 
+addCurrentThemeClass();
 populateAllCards().then();
 
 async function populateAllCards() {
@@ -89,13 +90,7 @@ function setCardBackText(card, text) {
 }
 
 function switchDarkMode() {
-    if (!document.documentElement.classList.contains('light') && !document.documentElement.classList.contains('dark')) {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.add('light');
-        }
-    }
+    addCurrentThemeClass();
 
     if (document.documentElement.classList.contains('light')) {
         document.documentElement.classList.remove('light');
@@ -103,5 +98,15 @@ function switchDarkMode() {
     } else if (document.documentElement.classList.contains('dark')) {
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
+    }
+}
+
+function addCurrentThemeClass() {
+    if (!document.documentElement.classList.contains('light') && !document.documentElement.classList.contains('dark')) {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.add('light');
+        }
     }
 }

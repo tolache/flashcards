@@ -9,24 +9,33 @@
     /*outline: solid #f00 1px !important;*/
 }
 
+:root {
+    --bg-color--light: white;
+    --soft-color--light: #CCE5FF;
+    --accent-color--light: #007BFF;
+    --bg-color--dark: #212529;
+    --soft-color--dark: #6c757d;
+    --accent-color--dark: #dee2e6;
+}
+
 :root,
 :root.light {
-    --bg-color: white;
-    --soft-color: #CCE5FF;
-    --accent-color: #007BFF;
+    --bg-color: var(--bg-color--light);
+    --soft-color: var(--soft-color--light);
+    --accent-color: var(--accent-color--light);
 }
 
 :root.dark {
-    --bg-color: #212529;
-    --soft-color: #6c757d;
-    --accent-color: #dee2e6;
+    --bg-color: var(--bg-color--dark);
+    --soft-color: var(--soft-color--dark);
+    --accent-color: var(--accent-color--dark);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-color: #212529;
-        --soft-color: #6c757d;
-        --accent-color: #dee2e6;
+        --bg-color: var(--bg-color--dark);
+        --soft-color: var(--soft-color--dark);
+        --accent-color: var(--soft-color--dark);
     }
 }
 
@@ -183,4 +192,9 @@ aside#right-panel {
 .control-icon p {
     font-size: x-large;
     color: var(--bg-color);
+}
+
+.dark #moon,
+.light #sun {
+    display: none;
 }
