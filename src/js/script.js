@@ -1,19 +1,45 @@
-const changeLanguageCheckbox = document.getElementById('change-language--checkbox');
-changeLanguageCheckbox.addEventListener('change', (e) => {
-   if (e.currentTarget.checked) {
-       languageIsEnNl = true;
-       populateAllCards().then();
-   } else {
-       languageIsEnNl = false;
-       populateAllCards().then();
-   }
-});
+addEventListeners();
+addCurrentThemeClass();
 
 let languageIsEnNl = false;
 let verbs = [];
 
-addCurrentThemeClass();
 populateAllCards().then();
+
+function addEventListeners() {
+    const changeLanguageCheckbox = document.getElementById('change-language--checkbox');
+    changeLanguageCheckbox.addEventListener('change', (e) => {
+        if (e.currentTarget.checked) {
+            languageIsEnNl = true;
+            populateAllCards().then();
+        } else {
+            languageIsEnNl = false;
+            populateAllCards().then();
+        }
+    });
+}
+
+function switchDarkMode() {
+    addCurrentThemeClass();
+
+    if (document.documentElement.classList.contains('light')) {
+        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
+    } else if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+    }
+}
+
+function addCurrentThemeClass() {
+    if (!document.documentElement.classList.contains('light') && !document.documentElement.classList.contains('dark')) {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.add('light');
+        }
+    }
+}
 
 async function populateAllCards() {
     const cards = document.getElementsByClassName('card');
@@ -45,6 +71,14 @@ async function populateAllCards() {
         }
         setCardFrontText(cards[i], frontText);
         setCardBackText(cards[i], backText);
+    }
+
+    function setCardFrontText(card, text) {
+        card.children[0].children[0].textContent = text;
+    }
+
+    function setCardBackText(card, text) {
+        card.children[1].children[0].textContent = text;
     }
 }
 
@@ -78,35 +112,5 @@ function ParseVerb(inputString) {
             hint = '';
         }
         return hint;
-    }
-}
-
-function setCardFrontText(card, text) {
-    card.children[0].children[0].textContent = text;
-}
-
-function setCardBackText(card, text) {
-    card.children[1].children[0].textContent = text;
-}
-
-function switchDarkMode() {
-    addCurrentThemeClass();
-
-    if (document.documentElement.classList.contains('light')) {
-        document.documentElement.classList.remove('light');
-        document.documentElement.classList.add('dark');
-    } else if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-    }
-}
-
-function addCurrentThemeClass() {
-    if (!document.documentElement.classList.contains('light') && !document.documentElement.classList.contains('dark')) {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.add('light');
-        }
     }
 }
