@@ -71,6 +71,8 @@ async function populateAllCards() {
         }
         setCardFrontText(cards[i], frontText);
         setCardBackText(cards[i], backText);
+
+        verbs.splice(randomVerbIndex, 1);
     }
 
     function setCardFrontText(card, text) {
