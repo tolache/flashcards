@@ -98,16 +98,12 @@ async function readAllLinesFromFile(file) {
 function ParseVerb(inputString) {
     const fields = inputString.split(',');
     this.infinitive = fields[0];
-    this.pastIndicative = stripPlural(fields[1]);
-    this.pastIndicativeWithPlural = fields[1];
-    this.pastParticiple = fields[2];
-    this.auxVerb = fields[3];
+    this.pastIndicative = fields[1];
+    this.pastIndicativePlural = fields[2];
+    this.pastParticiple = fields[3];
+    this.auxVerb = fields[4];
     this.auxVerbHint = getAuxVerbHint(this.auxVerb);
-    this.english = fields[4];
-
-    function stripPlural(field) {
-        return field.split('/')[0];
-    }
+    this.english = fields[5];
 
     function getAuxVerbHint(auxVerb) {
         let hint;
