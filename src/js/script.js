@@ -1,4 +1,4 @@
-updateTheme();
+initializeTheme();
 
 const languageFromTo = {
     NlEn: "NL>EN",
@@ -28,7 +28,7 @@ function setLanguageLabel(caption) {
     label.innerText = caption;
 }
 
-function updateTheme() {
+function initializeTheme() {
     if (!document.documentElement.classList.contains('light') && !document.documentElement.classList.contains('dark')) {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
