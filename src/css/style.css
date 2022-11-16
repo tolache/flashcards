@@ -195,12 +195,26 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 4em;
-    width: 4em;
-    border-radius: 2em;
+    height: 64px;
+    width: 64px;
+    border-radius: 32px;
     border: none;
     color: var(--bg-color);
     background: var(--accent-color);
+}
+
+#change-language {
+    font-size: large;
+}
+
+#next-round,
+#switch-theme {
+    font-size: xx-large;
+}
+
+#switch-theme span {
+    position: relative;
+    top: -2px;
 }
 
 aside#right-panel {
