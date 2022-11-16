@@ -18,7 +18,8 @@
     --accent-color--dark: #dee2e6;
 }
 
-:root,
+@media (prefers-color-scheme: dark) {}
+
 :root.light {
     --bg-color: var(--bg-color--light);
     --soft-color: var(--soft-color--light);
@@ -29,14 +30,6 @@
     --bg-color: var(--bg-color--dark);
     --soft-color: var(--soft-color--dark);
     --accent-color: var(--accent-color--dark);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-color: var(--bg-color--dark);
-        --soft-color: var(--soft-color--dark);
-        --accent-color: var(--soft-color--dark);
-    }
 }
 
 body {
