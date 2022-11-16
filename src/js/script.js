@@ -1,22 +1,31 @@
-addEventListeners();
 addCurrentThemeClass();
 
-let languageIsEnNl = false;
+const languageFromTo = {
+    NlEn: "NL>EN",
+    EnNl: "EN>NL"
+}
+
+let language = languageFromTo.NlEn;
 let verbs = [];
 
+setLanguageLabel(language);
 populateAllCards().then();
 
-function addEventListeners() {
-    const changeLanguageCheckbox = document.getElementById('change-language--checkbox');
-    changeLanguageCheckbox.addEventListener('change', (e) => {
-        if (e.currentTarget.checked) {
-            languageIsEnNl = true;
-            populateAllCards().then();
-        } else {
-            languageIsEnNl = false;
-            populateAllCards().then();
-        }
-    });
+function switchLanguage() {
+    if (language === languageFromTo.NlEn) {
+        language = languageFromTo.EnNl;
+        setLanguageLabel(language);
+        populateAllCards().then();
+    } else {
+        language = languageFromTo.NlEn
+        setLanguageLabel(language);
+        populateAllCards().then();
+    }
+}
+
+function setLanguageLabel(caption) {
+    const label = document.getElementById('language-label');
+    label.innerText = caption;
 }
 
 function switchDarkMode() {
@@ -51,11 +60,11 @@ async function populateAllCards() {
     for (let i = 0; i < cards.length; i++) {
         const verbCount = verbs.length;
         const randomVerbIndex = Math.floor(Math.random() * verbCount)
-
         const verb = verbs[randomVerbIndex];
+
         let frontText;
         let backText;
-        if (!languageIsEnNl) {
+        if (language === languageFromTo.NlEn) {
             frontText = verb.infinitive;
             backText = `${verb.pastIndicative}
                         ${verb.auxVerbHint}${verb.pastParticiple}

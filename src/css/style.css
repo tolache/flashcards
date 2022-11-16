@@ -106,7 +106,7 @@ h1 {
     margin: 15px;
 }
 
-.rotatable-wrapper:hover .card.rotatable {
+.rotatable-wrapper:hover .rotatable {
     transform: perspective(350px) rotateY(180deg);
 }
 
@@ -131,12 +131,12 @@ h1 {
     transform: rotateY(180deg);
 }
 
-.card--side.rotatable--front {
+.rotatable--front {
     background: var(--bg-color);
     color: var(--accent-color);
 }
 
-.card--side.rotatable--back {
+.rotatable--back {
     background: var(--accent-color);
     color: var(--bg-color);
 }
@@ -183,14 +183,11 @@ pre {
 }
 
 nav {
-    margin-top: 2em;
-}
-
-nav > ul {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
     list-style: none;
+    margin-top: 2em;
 }
 
 .control-icon {
@@ -204,11 +201,7 @@ nav > ul {
     border-radius: 2em;
 }
 
-.control-icon input {
-    display: none;
-}
-
-.invisible-label {
+.invisible-button {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -218,10 +211,6 @@ nav > ul {
     z-index: 1;
 }
 
-.control-icon input#change-language--checkbox:checked ~ .rotatable {
-    transform: perspective(350px) rotateY(180deg);
-}
-
 aside#right-panel {
     display: flex;
     flex-flow: row nowrap;
@@ -229,7 +218,7 @@ aside#right-panel {
 }
 
 .control-icon p {
-    font-size: x-large;
+    font-size: large;
     color: var(--bg-color);
 }
 

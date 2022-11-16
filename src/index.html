@@ -130,21 +130,15 @@
     </section>
 
     <nav>
-        <ul>
-            <li class="control-icon rotatable-wrapper">
-                <input type="checkbox" id="change-language--checkbox">
-                <div class="rotatable">
-                    <div class="rotatable--front"><img alt="nl-en" src="images/nl-en.png"></div>
-                    <div class="rotatable--back"><img alt="nl-en" src="images/en-nl.png"></div>
-                </div>
-                <label for="change-language--checkbox" class="invisible-label"></label>
-            </li>
-            <li class="control-icon" id="next-round">
-                <p>►</p>
-                <button class="invisible-label" onclick="populateAllCards().then()"></button>
-            </li>
-            <li class="control-icon" id="reset-game"></li>
-        </ul>
+        <div class="control-icon">
+            <p id="language-label">XX&gt;YY</p>
+            <button class="invisible-button" onclick="switchLanguage()"></button>
+        </div>
+        <div class="control-icon" id="next-round">
+            <p>►</p>
+            <button class="invisible-button" onclick="populateAllCards().then()"></button>
+        </div>
+        <div class="control-icon" id="reset-game"></div>
     </nav>
 </section>
 
@@ -152,7 +146,7 @@
     <div class="control-icon">
         <p id="sun">☀</p>
         <p id="moon">☽</p>
-        <button class="invisible-label" onclick="switchDarkMode()"></button>
+        <button class="invisible-button" onclick="switchDarkMode()"></button>
     </div>
 </aside>
 
