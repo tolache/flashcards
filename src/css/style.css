@@ -195,20 +195,12 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--accent-color);
     height: 4em;
     width: 4em;
     border-radius: 2em;
-}
-
-.invisible-button {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 1;
+    border: none;
+    color: var(--bg-color);
+    background: var(--accent-color);
 }
 
 aside#right-panel {
@@ -217,12 +209,7 @@ aside#right-panel {
     justify-content: flex-end;
 }
 
-.control-icon p {
-    font-size: large;
-    color: var(--bg-color);
-}
-
-.dark #moon,
-.light #sun {
+:root.light #sun,
+:root.dark #moon {
     display: none;
 }

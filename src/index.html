@@ -18,6 +18,7 @@
     <header>
         <h1>Dutch Irregular Verbs</h1>
     </header>
+
     <section class="card-grid">
         <div class="rotatable-wrapper">
             <div class="card rotatable card-00">
@@ -130,24 +131,17 @@
     </section>
 
     <nav>
-        <div class="control-icon">
-            <p id="language-label">XX&gt;YY</p>
-            <button class="invisible-button" onclick="switchLanguage()"></button>
-        </div>
-        <div class="control-icon" id="next-round">
-            <p>►</p>
-            <button class="invisible-button" onclick="populateAllCards().then()"></button>
-        </div>
-        <div class="control-icon" id="reset-game"></div>
+        <button class="control-icon" id="change-language" onclick="switchLanguage()">XX&gt;YY</button>
+        <button class="control-icon" onclick="populateAllCards().then()">►</button>
+        <button class="control-icon"></button>
     </nav>
 </section>
 
 <aside id="right-panel">
-    <div class="control-icon">
-        <p id="sun">☀</p>
-        <p id="moon">☽</p>
-        <button class="invisible-button" onclick="switchDarkMode()"></button>
-    </div>
+    <button class="control-icon" id="switch-theme" onclick="switchTheme()">
+        <span id="sun">☀</span>
+        <span id="moon">☽</span>
+    </button>
 </aside>
 
 <script src="js/script.js"></script>
