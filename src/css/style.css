@@ -209,7 +209,7 @@ aside#right-panel {
     justify-content: flex-end;
 }
 
-:root.light #sun,
-:root.dark #moon {
+:root.light #switch-theme__caption--dark,
+:root.dark #switch-theme__caption--light {
     display: none;
 }
