@@ -1,5 +1,8 @@
 # Flashcards
-A simple flashing cards game to help you learn Dutch irregular verbs.
+A simple flashing cards game for memorizing irregular verbs.
+
+## Supported Languages:
+Dutch for English-speakers
 
 ## How to run it
 ```bash
