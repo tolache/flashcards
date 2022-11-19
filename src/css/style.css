@@ -98,15 +98,15 @@ header {
 }
 
 .score__delimiter,
-#score-counter #total {
+#score-counter__total {
     color: var(--accent-color);
 }
 
-#score-counter #right {
+#score-counter__right {
     color: var(--score__right-color);
 }
 
-#score-counter #wrong {
+#score-counter__wrong {
     color: var(--score__wrong-color);
 }
 
