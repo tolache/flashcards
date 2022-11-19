@@ -16,10 +16,10 @@
     --bg-color--dark: #212529;
     --soft-color--dark: #6c757d;
     --accent-color--dark: #dee2e6;
-    --cross-mark-color--light: pink;
-    --check-mark-color--light: lightgreen;
-    --cross-mark-color--dark: darkred;
-    --check-mark-color--dark: green;
+    --cross-mark__color--light: pink;
+    --check-mark__color--light: lightgreen;
+    --cross-mark__color--dark: darkred;
+    --check-mark__color--dark: green;
     --score__right-color--light: green;
     --score__wrong-color--light: darkred;
     --score__right-color--dark: lightgreen;
@@ -32,8 +32,8 @@
     --bg-color: var(--bg-color--light);
     --soft-color: var(--soft-color--light);
     --accent-color: var(--accent-color--light);
-    --cross-mark-color: var(--cross-mark-color--light);
-    --check-mark-color: var(--check-mark-color--light);
+    --cross-mark__color: var(--cross-mark__color--light);
+    --check-mark__color: var(--check-mark__color--light);
     --score__right-color: var(--score__right-color--light);
     --score__wrong-color: var(--score__wrong-color--light);
 }
@@ -42,8 +42,8 @@
     --bg-color: var(--bg-color--dark);
     --soft-color: var(--soft-color--dark);
     --accent-color: var(--accent-color--dark);
-    --cross-mark-color: var(--cross-mark-color--dark);
-    --check-mark-color: var(--check-mark-color--dark);
+    --cross-mark__color: var(--cross-mark__color--dark);
+    --check-mark__color: var(--check-mark__color--dark);
     --score__right-color: var(--score__right-color--dark);
     --score__wrong-color: var(--score__wrong-color--dark);
 }
@@ -210,11 +210,11 @@ pre {
 }
 
 .answer-button--wrong {
-    color: var(--cross-mark-color);
+    color: var(--cross-mark__color);
 }
 
 .answer-button--right {
-    color: var(--check-mark-color);
+    color: var(--check-mark__color);
 }
 
 nav {
