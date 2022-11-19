@@ -20,6 +20,10 @@
     --check-mark-color--light: lightgreen;
     --cross-mark-color--dark: darkred;
     --check-mark-color--dark: green;
+    --score__right-color--light: green;
+    --score__wrong-color--light: darkred;
+    --score__right-color--dark: lightgreen;
+    --score__wrong-color--dark: pink;
 }
 
 @media (prefers-color-scheme: dark) {}
@@ -30,6 +34,8 @@
     --accent-color: var(--accent-color--light);
     --cross-mark-color: var(--cross-mark-color--light);
     --check-mark-color: var(--check-mark-color--light);
+    --score__right-color: var(--score__right-color--light);
+    --score__wrong-color: var(--score__wrong-color--light);
 }
 
 :root.dark {
@@ -38,6 +44,8 @@
     --accent-color: var(--accent-color--dark);
     --cross-mark-color: var(--cross-mark-color--dark);
     --check-mark-color: var(--check-mark-color--dark);
+    --score__right-color: var(--score__right-color--dark);
+    --score__wrong-color: var(--score__wrong-color--dark);
 }
 
 body {
@@ -65,6 +73,7 @@ header,
 }
 
 header {
+    position: relative;
     background: var(--accent-color);
     color: var(--bg-color);
     display: flex;
@@ -73,6 +82,32 @@ header {
     border-radius: 2em;
     height: 4em;
     margin-bottom: 2em;
+}
+
+#score-counter {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 0;
+    margin-right: 1em;
+    background: var(--soft-color);
+    height: 2em;
+    padding: 0 0.5em;
+    border-radius: 1em;
+    font-weight: bolder;
+}
+
+.score__delimiter,
+#score-counter #total {
+    color: var(--accent-color);
+}
+
+#score-counter #right {
+    color: var(--score__right-color);
+}
+
+#score-counter #wrong {
+    color: var(--score__wrong-color);
 }
 
 h1 {
